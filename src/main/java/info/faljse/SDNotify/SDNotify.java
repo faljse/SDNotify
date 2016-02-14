@@ -1,6 +1,6 @@
-package info.faljse.systemdnotify;
+package info.faljse.SDNotify;
 
-import info.faljse.systemdnotify.io.NativeDomainSocket;
+import info.faljse.SDNotify.io.NativeDomainSocket;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

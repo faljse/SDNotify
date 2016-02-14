@@ -1,6 +1,4 @@
-package info.faljse.systemdnotify.io;
-
-import info.faljse.systemdnotify.io.NativeDomainSocket;
+package info.faljse.SDNotify.io;
 
 import java.io.IOException;
 import java.io.InputStream;

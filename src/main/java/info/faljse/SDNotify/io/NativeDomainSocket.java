@@ -1,4 +1,4 @@
-package info.faljse.systemdnotify.io;
+package info.faljse.SDNotify.io;
 
 import java.io.IOException;
 import java.io.InputStream;
