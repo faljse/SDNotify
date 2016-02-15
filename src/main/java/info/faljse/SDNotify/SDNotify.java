@@ -6,7 +6,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *  Created by Martin Kunz on 14.02.2016.
+ *  Copyright (C) 2016 Martin Kunz <martin.michael.kunz@gmail.com>
+ *
+ *  @see <a href="https://github.com/faljse/SDNotify">https://github.com/faljse/SDNotify</a>
+ *  @author <a href="mailto:martin.michael.kunz@gmail.com">Martin Kunz</a>
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
@@ -35,7 +38,7 @@ public class SDNotify {
             return;
         }
         try {
-            NativeDomainSocket.SockAddr sockAddr = new NativeDomainSocket.SockAddr(socketName, false);
+            NativeDomainSocket.SockAddr sockAddr = new NativeDomainSocket.SockAddr(socketName);
             if (sockAddr == null) {
                 log.warning("Could not create SockAddr, socketName=\"" + socketName + "\"");
                 return;
