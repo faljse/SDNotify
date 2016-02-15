@@ -5,6 +5,15 @@ SDNotify implements the [systemd](https://www.freedesktop.org/wiki/Software/syst
 The Notify protocol uses datagram unix sockets, which are not accessible via Java;
 Therefore SDNotify includes a JNA wrapper of the socket API.
 
+SDNotify is available via maven:
+```xml
+<dependency>
+    <groupId>info.faljse</groupId>
+    <artifactId>SDNotify</artifactId>
+    <version>1.0</version>
+</dependency>
+```
+
 ##Basic usage
 SDNotify is initialized at the first call to any send* function.
 
