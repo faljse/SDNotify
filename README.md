@@ -6,6 +6,10 @@ The Notify protocol uses datagram unix sockets, which are not accessible via Jav
 Therefore SDNotify includes a JNA wrapper of the socket API.
 
 ##Basic usage
+SDNotify is initialized at the first call to any send* function.
+
+If the systemd Environment isn't available, or the initialization fails a warning message is logged.
+All further calls to SDNotify are ignored.
 ```java
 import info.faljse.systemdnotify.SDNotify;
 public class SDTest {
@@ -23,10 +27,12 @@ SDNotify.sendStatus("No space left on device");
 ```
 
 
-##Watchdog
+##Watchdog, etc.
 If a watchdog is configured systemd will kill the process 
 when `SDNotify.sendWatchdog()` isn't called every n seconds.
 
+Also available:
+`sendReloading()`, `sendStopping()`, `sendErrno()`, `sendBusError()` , `sendMainPID()` - see [sd_notify](https://www.freedesktop.org/software/systemd/man/sd_notify.html) manpage for details.
 
 ##Sample .service file
 [systemd service documentation](https://www.freedesktop.org/software/systemd/man/systemd.service.html)
