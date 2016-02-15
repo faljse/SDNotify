@@ -25,13 +25,13 @@ import java.util.logging.Logger;
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 public class SDNotify {
+    private static final Logger log = Logger.getLogger(SDNotify.class.getName());
     private final static String NOTIFY_SOCKET = "NOTIFY_SOCKET";
     private NativeDomainSocket sd;
     private static volatile SDNotify instance;
-    private boolean available = false;
-    private static final Logger log = Logger.getLogger(SDNotify.class.getName());
+    private volatile boolean available = false;
 
-    public SDNotify() {
+    private SDNotify() {
         String socketName = System.getenv().get(NOTIFY_SOCKET);
         if (socketName == null || socketName.length() == 0) {
             log.warning("Environment variable \"" + NOTIFY_SOCKET + "\" not set. Ignoring calls to SDNotify.");
@@ -55,8 +55,11 @@ public class SDNotify {
         available = true;
     }
 
-    public boolean isAvailable() {
-        return available;
+    /**
+     * @return true, if successfully initialized.
+     */
+    public static boolean isAvailable() {
+        return SDNotify.getInstance().available; //available is valid after initialization.
     }
 
     /**
@@ -136,7 +139,7 @@ public class SDNotify {
         SDNotify.getInstance().sendString("WATCHDOG=1");
     }
 
-    public static SDNotify getInstance() {
+    private static SDNotify getInstance() {
         if (instance == null) {
             synchronized (SDNotify.class) {
                 if (instance == null)
