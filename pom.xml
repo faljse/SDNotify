@@ -7,6 +7,34 @@
     <groupId>info.faljse</groupId>
     <artifactId>SDNotify</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>SDNotify</name>
+    <description>Java implementation of the systemd notify protocol</description>
+    <url>https://github.com/faljse/SDNotify</url>
+
+    <developers>
+        <developer>
+            <name>Martin Kunz</name>
+            <email>martin.michael.kunz@gmail.com</email>
+            <organization>faljse</organization>
+            <organizationUrl>https://faljse.info</organizationUrl>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The GNU Lesser General Public License, Version 2.0</name>
+            <url>http://www.gnu.org/licenses/lgpl-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:faljse/SDNotify.git</connection>
+        <developerConnection>scm:git:git@github.com:faljse/SDNotify.git</developerConnection>
+        <url>https://github.com/faljse/SDNotify</url>
+    </scm>
 
     <dependencies>
         <dependency>
