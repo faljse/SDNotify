@@ -16,11 +16,9 @@ import java.util.logging.Logger;
 
 /**
  *  Copyright (C) D-Bus Java, freedesktop.org
- *  Modified for SDNotify by Martin Kunz <martin.michael.kunz@gmail.com>
- *
- *  @see <a href="https://github.com/faljse/SDNotify">https://github.com/faljse/SDNotify</a>
- *  @see <a href="https://www.freedesktop.org/wiki/Software/DBusBindings/">https://www.freedesktop.org/wiki/Software/DBusBindings/</a>
- *
+ *  Modified for SDNotify by Martin Kunz, martin.michael.kunz@gmail.com
+ *  <a href="https://github.com/faljse/SDNotify">SDNotify</a>
+ *  <a href="https://www.freedesktop.org/wiki/Software/DBusBindings">DBusBindings</a>
  *  The D-Bus Java implementation is licensed to you under your choice of the
  *  Academic Free License version 2.1, or the GNU Lesser/Library General Public License
  *  version 2.

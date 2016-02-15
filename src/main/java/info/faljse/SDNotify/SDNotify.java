@@ -6,7 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *  Copyright (C) 2016 Martin Kunz <martin.michael.kunz@gmail.com>
+ *  Copyright (C) 2016 Martin Kunz, martin.michael.kunz@gmail.com
  *
  *  @see <a href="https://github.com/faljse/SDNotify">https://github.com/faljse/SDNotify</a>
  *  @author <a href="mailto:martin.michael.kunz@gmail.com">Martin Kunz</a>
@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  *  GNU Lesser General Public License for more details.
  *
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 public class SDNotify {
     private static final Logger log = Logger.getLogger(SDNotify.class.getName());
@@ -107,6 +107,7 @@ public class SDNotify {
 
     /**
      * If a service fails, the errno-style error code, formatted as string. Example: "ERRNO=2" for ENOENT.
+     * @param errno the errno-style error code, formatted as string.
      */
     public static void sendErrno(int errno) {
         SDNotify.getInstance().sendString(String.format("ERRNO=%d", errno));
@@ -115,6 +116,7 @@ public class SDNotify {
     /**
      * If a service fails, the D-Bus error-style error code.
      * Example: "BUSERROR=org.freedesktop.DBus.Error.TimedOut"
+     * @param error the D-Bus error-style error code.
      */
     public static void sendBusError(String error) {
         SDNotify.getInstance().sendString(String.format("BUSERROR=%s", error));
@@ -123,6 +125,8 @@ public class SDNotify {
     /**
      * The main process ID (PID) of the service,
      * in case the service manager did not fork off the process itself. Example: "MAINPID=4711"
+     *
+     * @param pid The main process ID (PID) of the service
      */
     public static void sendMainPID(int pid) {
         SDNotify.getInstance().sendString(String.format("MAINPID=%d", pid));
