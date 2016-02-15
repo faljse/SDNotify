@@ -8,7 +8,7 @@ Therefore SDNotify includes a JNA wrapper of the socket API.
 ##Basic usage
 SDNotify is initialized at the first call to any send* function.
 
-If the systemd Environment isn't available, or the initialization fails a warning message is logged.
+If the systemd environment isn't available, or the initialization fails a warning message is logged.
 All further calls to SDNotify are ignored.
 ```java
 import info.faljse.systemdnotify.SDNotify;
