@@ -57,8 +57,6 @@ WorkingDirectory=/opt/myserver/
 ExecStart=/usr/bin/java -server -jar myserver.jar
 # WatchdogSec=30
 # Restart=always
-StandardOutput=syslog
-StandardError=syslog
 
 [Install]
 WantedBy=multi-user.target
