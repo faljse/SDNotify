@@ -39,6 +39,8 @@ SDNotify.sendStatus("No space left on device");
 ##Watchdog, etc.
 If a watchdog is configured systemd will kill the process 
 when `SDNotify.sendWatchdog()` isn't called every n seconds.
+`isWatchdogEnabled()` and `getWatchdogFrequency()` may be used to
+determine if and at what interval `sendWatchdog()` should be called.
 
 Also available:
 `sendReloading()`, `sendStopping()`, `sendErrno()`, `sendBusError()` , `sendMainPID()` - see [sd_notify](https://www.freedesktop.org/software/systemd/man/sd_notify.html) manpage for details.
