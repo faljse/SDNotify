@@ -1,4 +1,5 @@
-# SDNotify
+# SDNotify 
+
 SDNotify implements the [systemd](https://www.freedesktop.org/wiki/Software/systemd/) 
 [notification protocol](https://www.freedesktop.org/software/systemd/man/sd_notify.html) in Java.
 
@@ -63,3 +64,5 @@ ExecStart=/usr/bin/java -server -jar myserver.jar
 [Install]
 WantedBy=multi-user.target
 ```
+
+[![Build Status](https://travis-ci.org/faljse/SDNotify.svg?branch=master)](https://travis-ci.org/faljse/SDNotify)
