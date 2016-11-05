@@ -1,6 +1,7 @@
 package info.faljse.SDNotify;
 
 import info.faljse.SDNotify.io.NativeDomainSocket;
+import info.faljse.SDNotify.jni.CLibrary;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +28,8 @@ import java.util.logging.Logger;
 public class SDNotify {
     private static final Logger log = Logger.getLogger(SDNotify.class.getName());
     private final static String NOTIFY_SOCKET = "NOTIFY_SOCKET";
+    private static final String WATCHDOG_USEC = "WATCHDOG_USEC";
+    private static final String WATCHDOG_PID = "WATCHDOG_PID";
     private NativeDomainSocket sd;
     private static volatile SDNotify instance;
     private volatile boolean available = false;
@@ -107,6 +110,7 @@ public class SDNotify {
 
     /**
      * If a service fails, the errno-style error code, formatted as string. Example: "ERRNO=2" for ENOENT.
+     *
      * @param errno the errno-style error code, formatted as string.
      */
     public static void sendErrno(int errno) {
@@ -116,6 +120,7 @@ public class SDNotify {
     /**
      * If a service fails, the D-Bus error-style error code.
      * Example: "BUSERROR=org.freedesktop.DBus.Error.TimedOut"
+     *
      * @param error the D-Bus error-style error code.
      */
     public static void sendBusError(String error) {
@@ -143,6 +148,28 @@ public class SDNotify {
         SDNotify.getInstance().sendString("WATCHDOG=1");
     }
 
+    /**
+     * Determines whether the watchdog is enabled.
+     * <p>
+     * Based on sd_watchdog_enabled(3), the watchdog should be enabled if
+     * WATCHDOG_USEC is set and WATCHDOG_PID is not set or is equal to the
+     * current process' pid.
+     */
+    public static boolean isWatchdogEnabled() {
+        String watchdog_pid = System.getenv(WATCHDOG_PID);
+        return isAvailable() && getWatchdogFrequency() > 0 && (isEmpty(watchdog_pid) || determinePid().equals(watchdog_pid));
+    }
+
+    /**
+     * Returns the watchdog frequency in microseconds or -1 if it is not set.
+     *
+     * It is recommended to call {@code sendWatchdog()} at half the time returned.
+     */
+    public static long getWatchdogFrequency() {
+        String watchdog_usec = System.getenv(WATCHDOG_USEC);
+        return isAvailable() && !isEmpty(watchdog_usec) ? Long.parseLong(watchdog_usec) : -1L;
+    }
+
     private static SDNotify getInstance() {
         if (instance == null) {
             synchronized (SDNotify.class) {
@@ -157,5 +184,13 @@ public class SDNotify {
         if (sd == null || available == false || s == null)
             return;
         sd.send(s.getBytes(), s.length());
+    }
+
+    private static String determinePid() {
+        return String.valueOf(CLibrary.LIBRARY.getpid());
+    }
+
+    private static boolean isEmpty(String s) {
+        return s == null || "".equals(s);
     }
 }
