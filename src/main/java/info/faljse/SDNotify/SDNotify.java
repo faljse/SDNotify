@@ -1,7 +1,7 @@
 package info.faljse.SDNotify;
 
 import info.faljse.SDNotify.io.NativeDomainSocket;
-import info.faljse.SDNotify.jni.CLibrary;
+import info.faljse.SDNotify.jna.CLibrary;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,8 +28,8 @@ import java.util.logging.Logger;
 public class SDNotify {
     private static final Logger log = Logger.getLogger(SDNotify.class.getName());
     private final static String NOTIFY_SOCKET = "NOTIFY_SOCKET";
-    private static final String WATCHDOG_USEC = "WATCHDOG_USEC";
-    private static final String WATCHDOG_PID = "WATCHDOG_PID";
+    private final static String WATCHDOG_USEC = "WATCHDOG_USEC";
+    private final static String WATCHDOG_PID = "WATCHDOG_PID";
     private NativeDomainSocket sd;
     private static volatile SDNotify instance;
     private volatile boolean available = false;
@@ -41,7 +41,7 @@ public class SDNotify {
             return;
         }
         try {
-            NativeDomainSocket.SockAddr sockAddr = new NativeDomainSocket.SockAddr(socketName);
+            CLibrary.SockAddr sockAddr = new CLibrary.SockAddr(socketName);
             if (sockAddr == null) {
                 log.warning("Could not create SockAddr, socketName=\"" + socketName + "\"");
                 return;
@@ -187,7 +187,7 @@ public class SDNotify {
     }
 
     private static String determinePid() {
-        return String.valueOf(CLibrary.LIBRARY.getpid());
+        return String.valueOf(CLibrary.clib.getpid());
     }
 
     private static boolean isEmpty(String s) {
