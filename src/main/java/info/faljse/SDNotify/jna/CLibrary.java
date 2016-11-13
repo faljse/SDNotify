@@ -38,7 +38,7 @@ public class CLibrary {
 
     static {
         try {
-            Native.register("c");
+            Native.register(Platform.isWindows() ? "msvcrt" : "c");
         } catch (Exception e) {
             log.log(Level.WARNING, "Native.register(\"c\") failed", e);
         }

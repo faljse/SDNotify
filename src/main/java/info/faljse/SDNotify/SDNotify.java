@@ -154,6 +154,8 @@ public class SDNotify {
      * Based on sd_watchdog_enabled(3), the watchdog should be enabled if
      * WATCHDOG_USEC is set and WATCHDOG_PID is not set or is equal to the
      * current process' pid.
+     *
+     * @return true if watchdog is enabled
      */
     public static boolean isWatchdogEnabled() {
         String watchdog_pid = System.getenv(WATCHDOG_PID);
@@ -162,8 +164,9 @@ public class SDNotify {
 
     /**
      * Returns the watchdog frequency in microseconds or -1 if it is not set.
-     *
      * It is recommended to call {@code sendWatchdog()} at half the time returned.
+     *
+     * @return the watchdog frequency in microseconds or -1 if it is not set.
      */
     public static long getWatchdogFrequency() {
         String watchdog_usec = System.getenv(WATCHDOG_USEC);
