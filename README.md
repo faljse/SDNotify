@@ -21,10 +21,10 @@ SDNotify is initialized at the first call to any send* function.
 If the systemd environment isn't available, or the initialization fails a warning message is logged.
 All further calls to SDNotify are ignored.
 ```java
-import info.faljse.systemdnotify.SDNotify;
+import info.faljse.SDNotify.SDNotify;
 public class SDTest {
     public static void main(String[] args) {
-        initMyServer()
+        initMyServer();
         SDNotify.sendNotify(); //notify: ready
     }
 }
