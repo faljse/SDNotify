@@ -2,9 +2,9 @@ package info.faljse.SDNotify;
 
 import info.faljse.SDNotify.io.NativeDomainSocket;
 import info.faljse.SDNotify.jna.CLibrary;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *  Copyright (C) 2016 Martin Kunz, martin.michael.kunz@gmail.com
@@ -26,7 +26,7 @@ import java.util.logging.Logger;
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
 public class SDNotify {
-    private static final Logger log = Logger.getLogger(SDNotify.class.getName());
+    private final static Logger log = LoggerFactory.getLogger(SDNotify.class);
     private final static String NOTIFY_SOCKET = "NOTIFY_SOCKET";
     private final static String WATCHDOG_USEC = "WATCHDOG_USEC";
     private final static String WATCHDOG_PID = "WATCHDOG_PID";
@@ -37,23 +37,23 @@ public class SDNotify {
     private SDNotify() {
         String socketName = System.getenv().get(NOTIFY_SOCKET);
         if (socketName == null || socketName.length() == 0) {
-            log.warning("Environment variable \"" + NOTIFY_SOCKET + "\" not set. Ignoring calls to SDNotify.");
+            log.warn("Environment variable \"{}\" not set. Ignoring calls to SDNotify.", NOTIFY_SOCKET);
             return;
         }
         try {
             CLibrary.SockAddr sockAddr = new CLibrary.SockAddr(socketName);
             if (sockAddr == null) {
-                log.warning("Could not create SockAddr, socketName=\"" + socketName + "\"");
+                log.warn("Could not create SockAddr, socketName=\"{}\"", socketName);
                 return;
             }
             sd = new NativeDomainSocket();
             if (sd == null) {
-                log.warning("socket() failed.");
+                log.warn("socket() failed.");
                 return;
             }
             sd.connect(sockAddr);
         } catch (Exception e) {
-            log.log(Level.WARNING, "Notify init failed", e);
+            log.warn("Notify init failed", e);
         }
         available = true;
     }

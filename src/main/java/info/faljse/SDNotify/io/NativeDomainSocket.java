@@ -5,7 +5,6 @@ import info.faljse.SDNotify.jna.CLibrary;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.logging.Logger;
 
 import static info.faljse.SDNotify.jna.CLibrary.AF_UNIX;
 import static info.faljse.SDNotify.jna.CLibrary.SOCK_DGRAM;
@@ -21,8 +20,6 @@ import static info.faljse.SDNotify.jna.CLibrary.SOCK_DGRAM;
  */
 
 public class NativeDomainSocket {
-    private static final Logger log = Logger.getLogger(NativeDomainSocket.class.getName());
-
     private static CLibrary clib = new CLibrary();
     private int socket;
 
