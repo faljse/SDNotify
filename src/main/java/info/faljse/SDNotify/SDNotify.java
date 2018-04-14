@@ -42,15 +42,7 @@ public class SDNotify {
         }
         try {
             CLibrary.SockAddr sockAddr = new CLibrary.SockAddr(socketName);
-            if (sockAddr == null) {
-                log.warn("Could not create SockAddr, socketName=\"{}\"", socketName);
-                return;
-            }
             sd = new NativeDomainSocket();
-            if (sd == null) {
-                log.warn("socket() failed.");
-                return;
-            }
             sd.connect(sockAddr);
         } catch (Exception e) {
             log.warn("Notify init failed", e);
