@@ -1,13 +1,13 @@
 import com.sun.jna.Platform;
 import info.faljse.SDNotify.SDNotify;
 import info.faljse.SDNotify.jna.CLibrary;
-import org.junit.Assume;
-import org.junit.Test;
+import org.junit.jupiter.api.Assumptions;
+import org.junit.jupiter.api.Test;
 
 public class SDNTest {
     @Test
     public void getPidReturnsInteger() {
-        Assume.assumeFalse(Platform.isWindows());
+        Assumptions.assumeFalse(Platform.isWindows());
         int pid = CLibrary.clib.getpid();
         assert (pid > 1);
     }
