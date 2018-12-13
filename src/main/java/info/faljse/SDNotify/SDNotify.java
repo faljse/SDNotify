@@ -141,6 +141,16 @@ public class SDNotify {
     }
 
     /**
+     * Sends a custom message to the service manager.
+     * Example: "EXTEND_TIMEOUT_USEC=3000000" to extend the startup timeout
+     *
+     * @param message The message to be sent through sd_notify
+     */
+    public static void sendRaw(String message) {
+        SDNotify.getInstance().sendString(message);
+    }
+
+    /**
      * Determines whether the watchdog is enabled.
      * <p>
      * Based on sd_watchdog_enabled(3), the watchdog should be enabled if
