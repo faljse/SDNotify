@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
 
     <groupId>info.faljse</groupId>
@@ -129,6 +129,11 @@
                             <releaseProfiles>release</releaseProfiles>
                             <goals>deploy</goals>
                         </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs-maven-plugin</artifactId>
+                        <version>3.1.9</version>
                     </plugin>
                 </plugins>
             </build>

@@ -5,6 +5,7 @@ import com.sun.jna.ptr.IntByReference;
 import info.faljse.SDNotify.io.NativeDomainSocket;
 
 import java.nio.Buffer;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
@@ -64,11 +65,10 @@ public class CLibrary {
     native public int getpid() throws LastErrorException;
 
     public static class SockAddr extends Structure implements Structure.ByReference {
-        public short family = AF_UNIX;
         public byte[] addr = new byte[108];
 
         public SockAddr(String name) {
-            System.arraycopy(name.getBytes(), 0, addr, 0, name.length());
+            System.arraycopy(name.getBytes(StandardCharsets.US_ASCII), 0, addr, 0, name.length());
         }
 
         @Override

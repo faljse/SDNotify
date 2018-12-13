@@ -5,6 +5,8 @@ import info.faljse.SDNotify.jna.CLibrary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.nio.charset.StandardCharsets;
+
 
 /**
  *  Copyright (C) 2016 Martin Kunz, martin.michael.kunz@gmail.com
@@ -188,7 +190,7 @@ public class SDNotify {
     private void sendString(String s) {
         if (sd == null || available == false || s == null)
             return;
-        sd.send(s.getBytes(), s.length());
+        sd.send(s.getBytes(StandardCharsets.US_ASCII), s.length());
     }
 
     private static String determinePid() {
