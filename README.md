@@ -67,4 +67,9 @@ ExecStart=/usr/bin/java -server -jar myserver.jar
 WantedBy=multi-user.target
 ```
 
+## Dependencies
+* [jna](https://github.com/java-native-access/jna)
+* [slf4j](https://www.slf4j.org/)
+
+
 [![Build Status](https://travis-ci.org/faljse/SDNotify.svg?branch=master)](https://travis-ci.org/faljse/SDNotify)
