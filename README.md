@@ -11,7 +11,7 @@ SDNotify is available via maven:
 <dependency>
     <groupId>info.faljse</groupId>
     <artifactId>SDNotify</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
 </dependency>
 ```
 
@@ -45,6 +45,8 @@ determine if and at what interval `sendWatchdog()` should be called.
 
 Also available:
 `sendReloading()`, `sendStopping()`, `sendErrno()`, `sendBusError()` , `sendMainPID()` - see [sd_notify](https://www.freedesktop.org/software/systemd/man/sd_notify.html) manpage for details.
+
+There is also `sendRaw()` for unsupported/unknown/future functions.
 
 ## Sample .service file
 [systemd service documentation](https://www.freedesktop.org/software/systemd/man/systemd.service.html)
