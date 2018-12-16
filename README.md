@@ -11,7 +11,7 @@ SDNotify is available via maven:
 <dependency>
     <groupId>info.faljse</groupId>
     <artifactId>SDNotify</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
 </dependency>
 ```
 
