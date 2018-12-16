@@ -65,6 +65,7 @@ public class CLibrary {
     native public int getpid() throws LastErrorException;
 
     public static class SockAddr extends Structure implements Structure.ByReference {
+        public short family = AF_UNIX;
         public byte[] addr = new byte[108];
 
         public SockAddr(String name) {
