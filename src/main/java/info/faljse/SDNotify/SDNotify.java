@@ -163,7 +163,7 @@ public class SDNotify {
      */
     public static boolean isWatchdogEnabled() {
         String watchdog_pid = System.getenv(WATCHDOG_PID);
-        return isAvailable() && getWatchdogFrequency() > 0 && (isEmpty(watchdog_pid) || determinePid().equals(watchdog_pid));
+        return isAvailable() && getWatchdogFrequency() > 0 && (isEmpty(watchdog_pid) || (String.valueOf(getPid()).equals(watchdog_pid)));
     }
 
     /**
@@ -193,8 +193,14 @@ public class SDNotify {
         sd.send(s.getBytes(StandardCharsets.UTF_8), s.length());
     }
 
-    private static String determinePid() {
-        return String.valueOf(CLibrary.clib.getpid());
+    /**
+     * Returns the process ID (PID) of the calling process.
+     * Running java >=9 there is also ProcessHandle.current().pid();
+     *
+     * @return the process ID (PID) of the calling process.
+     */
+    public static int getPid() {
+        return CLibrary.clib.getpid();
     }
 
     private static boolean isEmpty(String s) {
