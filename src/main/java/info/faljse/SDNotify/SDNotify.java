@@ -190,7 +190,7 @@ public class SDNotify {
     private void sendString(String s) {
         if (sd == null || available == false || s == null)
             return;
-        sd.send(s.getBytes(StandardCharsets.US_ASCII), s.length());
+        sd.send(s.getBytes(StandardCharsets.UTF_8), s.length());
     }
 
     private static String determinePid() {
