@@ -195,7 +195,7 @@ public class SDNotify {
 
     /**
      * Returns the process ID (PID) of the calling process.
-     * Running java >=9 there is also ProcessHandle.current().pid();
+     * Running java 9 there is also ProcessHandle.current().pid();
      *
      * @return the process ID (PID) of the calling process.
      */
