@@ -1,12 +1,16 @@
 package info.faljse.SDNotify.jna;
 
-import com.sun.jna.*;
+import com.sun.jna.LastErrorException;
+import com.sun.jna.Platform;
+import com.sun.jna.Native;
+import com.sun.jna.Pointer;
+import com.sun.jna.Structure;
+
 import com.sun.jna.ptr.IntByReference;
 import info.faljse.SDNotify.io.NativeDomainSocket;
 
 import java.nio.Buffer;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,8 +77,8 @@ public class CLibrary {
         }
 
         @Override
-        protected List getFieldOrder() {
-            return Arrays.asList(new String[]{"family", "addr"});
+        protected List<String> getFieldOrder() {
+            return List.of("family", "addr");
         }
     }
 

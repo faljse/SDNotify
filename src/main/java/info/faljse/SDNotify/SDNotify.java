@@ -43,6 +43,8 @@ public class SDNotify {
             return;
         }
         try {
+        	if(socketName.charAt(0)=='@')
+        		socketName = '\0' + socketName.substring(1);
             CLibrary.SockAddr sockAddr = new CLibrary.SockAddr(socketName);
             sd = new NativeDomainSocket();
             sd.connect(sockAddr);
