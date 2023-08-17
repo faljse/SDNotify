@@ -7,11 +7,12 @@ The Notify protocol uses datagram unix sockets, which are not accessible via Jav
 Therefore SDNotify includes a JNA wrapper of the socket API.
 
 SDNotify is available via maven:
+[central.sonatype.com](https://central.sonatype.com/artifact/info.faljse/SDNotify/1.5/overview)
 ```xml
 <dependency>
     <groupId>info.faljse</groupId>
     <artifactId>SDNotify</artifactId>
-    <version>1.3</version>
+    <version>1.5</version>
 </dependency>
 ```
 
@@ -70,6 +71,3 @@ WantedBy=multi-user.target
 ## Dependencies
 * [jna](https://github.com/java-native-access/jna)
 * [slf4j](https://www.slf4j.org/)
-
-
-[![Build Status](https://travis-ci.org/faljse/SDNotify.svg?branch=master)](https://travis-ci.org/faljse/SDNotify)
