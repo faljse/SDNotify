@@ -12,6 +12,8 @@ import info.faljse.SDNotify.io.NativeDomainSocket;
 import java.nio.Buffer;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -78,7 +80,10 @@ public class CLibrary {
 
         @Override
         protected List<String> getFieldOrder() {
-            return List.of("family", "addr");
+            ArrayList a = new ArrayList();
+            a.add("family");
+            a.add("addr");
+            return Collections.unmodifiableList(a);
         }
     }
 
