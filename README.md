@@ -1,13 +1,13 @@
 # SDNotify 
 
-SDNotify implements the [systemd](https://www.freedesktop.org/wiki/Software/systemd/) 
+SDNotify implements the [systemd](https://systemd.io/) 
 [notification protocol](https://www.freedesktop.org/software/systemd/man/sd_notify.html) in Java.
 
 The Notify protocol uses datagram unix sockets, which are not accessible via Java;
 Therefore SDNotify includes a JNA wrapper of the socket API.
 
 SDNotify is available via maven:
-[central.sonatype.com](https://central.sonatype.com/artifact/info.faljse/SDNotify/1.5/overview)
+[central.sonatype.com](https://central.sonatype.com/artifact/info.faljse/SDNotify/1.6/overview)
 ```xml
 <dependency>
     <groupId>info.faljse</groupId>
